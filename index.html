@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification User Agent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 24px;
+            padding: 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            background-color: #fff8f8;
+        }
+    </style>
+    <script>
+        // Vérification côté client (moins sécurisée)
+        window.onload = function() {
+            const userAgent = navigator.userAgent;
+            
+            if (!userAgent || userAgent.trim() === '') {
+                document.getElementById('content').innerHTML = 
+                    '<div class="error">🚫 Vous êtes un robot !</div>' +
+                    '<p>Aucun User Agent détecté. Accès refusé.</p>';
+            } else {
+                document.getElementById('userAgentInfo').textContent = userAgent;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Vérification du User Agent</h1>
+    
+    <div id="content">
+        <div class="success" style="color: #2ecc71; font-size: 24px; padding: 20px; border: 2px solid #2ecc71; border-radius: 10px;">
+            ✅ User Agent détecté - Accès autorisé
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <p><strong>Votre User Agent :</strong></p>
+            <div id="userAgentInfo" style="padding: 15px; background-color: #f5f5f5; border-radius: 5px; word-wrap: break-word;"></div>
+        </div>
+    </div>
+</body>
+</html>
